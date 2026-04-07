@@ -13,10 +13,24 @@ export function LandingPage({ onStart }: LandingPageProps) {
             DevOps Maturity Scorecard
           </h1>
           <p className="text-xl text-slate-600 mb-8">
-            Benchmark your engineering team against Elite DevOps standards — built from real-world experience, not theory.
+            A totally free, strictly no-sales scorecard to benchmark your engineering processes, find bottlenecks, and get an honest action plan.
           </p>
         </div>
 
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
+            <h3 className="font-semibold text-slate-900 mb-2">Engineering Leaders</h3>
+            <p className="text-slate-600 text-sm">Benchmark your org, identify systemic bottlenecks, and justify infrastructure investments.</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
+            <h3 className="font-semibold text-slate-900 mb-2">Platform Teams</h3>
+            <p className="text-slate-600 text-sm">Find out exactly where developers are getting stuck to prioritise your internal tooling roadmap.</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
+            <h3 className="font-semibold text-slate-900 mb-2">Consultants &amp; Freelancers</h3>
+            <p className="text-slate-600 text-sm">Run this on day one of a new client engagement to instantly map their maturity and propose quick wins.</p>
+          </div>
+        </div>
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">
             How mature is your DevOps practice? Find out in 10 minutes.
@@ -36,73 +50,40 @@ export function LandingPage({ onStart }: LandingPageProps) {
         <div className="bg-white rounded-lg shadow-md border-l-4 border-teal-500 p-8">
           <div className="flex items-start gap-4 mb-4">
             <User className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
-            <h3 className="text-xl font-semibold text-slate-900">About this tool</h3>
+            <h3 className="text-xl font-semibold text-slate-900">About the Author</h3>
           </div>
 
           <div className="text-slate-700 space-y-4 leading-relaxed">
-            <p>
-              I built this scorecard as a Lead DevOps Engineer with 6+ years of experience designing and scaling production cloud platforms on AWS.
-            </p>
-
-            <p>
-              The questions, scoring framework, and benchmarks in this tool are not academic — they come directly from real engineering work, including:
-            </p>
-
-            <ul className="space-y-2 ml-4">
-              <li className="flex items-start">
-                <span className="text-teal-600 mr-2">→</span>
-                <span>Reducing AWS cloud spend from $300,000 to $130,000 per year (a 60% saving) through infrastructure optimisation, rightsizing, and cost governance</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-teal-600 mr-2">→</span>
-                <span>Scaling deployment frequency from 150 releases per month to over 200 releases per week across 60+ microservices — without increasing failure rates</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-teal-600 mr-2">→</span>
-                <span>Cutting MTTR (the time it takes to fix a live incident) from over 6 hours down to under 15 minutes using observability tooling and structured on-call processes</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-teal-600 mr-2">→</span>
-                <span>Achieving 99.99% uptime with zero SLA breaches across 10+ production environments over 4 years</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-teal-600 mr-2">→</span>
-                <span>Growing and leading an engineering team from 6 to 55 people, introducing sprint ceremonies, SLA/SLO frameworks, and blameless postmortem culture</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-teal-600 mr-2">→</span>
-                <span>Maintaining full ISO 27001 and GDPR compliance across a multi-account AWS platform serving 100,000+ active users in the UK market</span>
-              </li>
-            </ul>
-
-            <p>
-              The scoring framework is aligned to Google's DORA research — the most widely cited study on software delivery performance in the industry.
-            </p>
+            <p>Hey, I'm Nikhil. Lead DevOps Engineer, been in the trenches long enough to have seen what good looks like and what it doesn't.</p>
+            <p>One thing I kept seeing across teams I worked with and interviewed at: nobody could clearly answer whether their problems came from an immature DevOps practice or from simply not having the right person in the role. Those are two completely different problems. One needs a roadmap. The other needs a hire. And confusing them wastes months and a lot of money.</p>
+            <p>This tool gives you a clear, honest answer to that question in 10 minutes. Free, no strings, no sales pitch at the end.</p>
+            <p>If the results raise questions you want to talk through, my contact is in the footer.</p>
 
             <div className="pt-4 border-t border-slate-200 mt-6">
-              <p className="font-semibold text-slate-900 mb-2">Connect with Nikhil:</p>
-              <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-sm font-medium">
                 <a
                   href="https://nikhilpatil.me"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-teal-600 hover:text-teal-700 underline"
                 >
-                  Website: nikhilpatil.me
+                  nikhilpatil.me
                 </a>
+                <span className="hidden sm:inline text-slate-300">|</span>
                 <a
                   href="https://linkedin.com/in/nikhil-s-patil"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-teal-600 hover:text-teal-700 underline"
                 >
-                  LinkedIn: linkedin.com/in/nikhil-s-patil
+                  linkedin.com/in/nikhil-s-patil
                 </a>
+                <span className="hidden sm:inline text-slate-300">|</span>
                 <a
                   href="mailto:nikhilpatil0507@gmail.com"
                   className="text-teal-600 hover:text-teal-700 underline"
                 >
-                  Email: nikhilpatil0507@gmail.com
+                  nikhilpatil0507@gmail.com
                 </a>
               </div>
             </div>

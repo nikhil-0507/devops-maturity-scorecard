@@ -3,9 +3,10 @@ import { TeamInfo } from '../types/assessment';
 interface TeamInfoStepProps {
   teamInfo: TeamInfo;
   onChange: (info: TeamInfo) => void;
+  highlightedField?: string | null;
 }
 
-export function TeamInfoStep({ teamInfo, onChange }: TeamInfoStepProps) {
+export function TeamInfoStep({ teamInfo, onChange, highlightedField }: TeamInfoStepProps) {
   return (
     <div className="space-y-6">
       <div>
@@ -22,10 +23,15 @@ export function TeamInfoStep({ teamInfo, onChange }: TeamInfoStepProps) {
           id="teamName"
           value={teamInfo.teamName}
           onChange={(e) => onChange({ ...teamInfo, teamName: e.target.value })}
-          className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
+            highlightedField === 'teamName' ? 'border-red-500 bg-red-50' : 'border-slate-300'
+          }`}
           placeholder="e.g., Acme Engineering"
           required
         />
+        {highlightedField === 'teamName' && (
+          <p className="mt-2 text-sm text-red-600">Please answer this question to continue.</p>
+        )}
       </div>
 
       <div>
@@ -37,10 +43,15 @@ export function TeamInfoStep({ teamInfo, onChange }: TeamInfoStepProps) {
           id="assessorName"
           value={teamInfo.assessorName}
           onChange={(e) => onChange({ ...teamInfo, assessorName: e.target.value })}
-          className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
+            highlightedField === 'assessorName' ? 'border-red-500 bg-red-50' : 'border-slate-300'
+          }`}
           placeholder="e.g., Jane Smith, Senior DevOps Engineer"
           required
         />
+        {highlightedField === 'assessorName' && (
+          <p className="mt-2 text-sm text-red-600">Please answer this question to continue.</p>
+        )}
       </div>
 
       <div>
@@ -51,7 +62,9 @@ export function TeamInfoStep({ teamInfo, onChange }: TeamInfoStepProps) {
           id="teamSize"
           value={teamInfo.teamSize}
           onChange={(e) => onChange({ ...teamInfo, teamSize: e.target.value })}
-          className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white"
+          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white ${
+            highlightedField === 'teamSize' ? 'border-red-500 bg-red-50' : 'border-slate-300'
+          }`}
           required
         >
           <option value="">Select team size...</option>
@@ -61,6 +74,9 @@ export function TeamInfoStep({ teamInfo, onChange }: TeamInfoStepProps) {
           <option value="51-200">51–200 people</option>
           <option value="200+">Over 200 people</option>
         </select>
+        {highlightedField === 'teamSize' && (
+          <p className="mt-2 text-sm text-red-600">Please answer this question to continue.</p>
+        )}
       </div>
 
       <div>
@@ -71,7 +87,9 @@ export function TeamInfoStep({ teamInfo, onChange }: TeamInfoStepProps) {
           id="assessorRole"
           value={teamInfo.assessorRole}
           onChange={(e) => onChange({ ...teamInfo, assessorRole: e.target.value })}
-          className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white"
+          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white ${
+            highlightedField === 'assessorRole' ? 'border-red-500 bg-red-50' : 'border-slate-300'
+          }`}
           required
         >
           <option value="">Select your role...</option>
@@ -81,6 +99,9 @@ export function TeamInfoStep({ teamInfo, onChange }: TeamInfoStepProps) {
           <option value="executive">CTO / VP Engineering</option>
           <option value="non-technical">Non-technical (HR, Recruiter, Product)</option>
         </select>
+        {highlightedField === 'assessorRole' && (
+          <p className="mt-2 text-sm text-red-600">Please answer this question to continue.</p>
+        )}
       </div>
     </div>
   );

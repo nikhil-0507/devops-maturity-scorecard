@@ -5,6 +5,7 @@ import { ResultsPage } from './components/ResultsPage';
 import { TeamInfo, Answers, Assessment, Scores, AIAnalysis } from './types/assessment';
 import { pillars } from './data/questions';
 import { calculateScores } from './utils/scoring';
+import { generateDynamicInsights } from './utils/dynamicInsights';
 import { supabase } from './lib/supabase';
 import { Loader2 } from 'lucide-react';
 
@@ -24,6 +25,37 @@ function App() {
 
     const calculatedScores = calculateScores(answers);
     setScores(calculatedScores);
+
+    // Save to scorecard_results without blocking or alerting the user
+    (async () => {
+      try {
+        const { error } = await supabase
+          .from('scorecard_results')
+          .insert({
+            team_name: teamInfo.teamName,
+            user_name: teamInfo.assessorName,
+            user_role: teamInfo.assessorRole,
+            team_size: teamInfo.teamSize,
+            overall_score: calculatedScores.overall,
+            maturity_level: calculatedScores.maturityLevel,
+            dora_score: calculatedScores.pillars.find(p => p.pillar === 'DORA METRICS')?.percentage || 0,
+            cicd_score: calculatedScores.pillars.find(p => p.pillar === 'CI/CD PIPELINE')?.percentage || 0,
+            security_score: calculatedScores.pillars.find(p => p.pillar === 'SECURITY POSTURE')?.percentage || 0,
+            observability_score: calculatedScores.pillars.find(p => p.pillar === 'OBSERVABILITY')?.percentage || 0,
+            culture_score: calculatedScores.pillars.find(p => p.pillar === 'TEAM CULTURE')?.percentage || 0,
+            cloud_security_score: calculatedScores.pillars.find(p => p.pillar === 'CLOUD SECURITY')?.percentage || 0,
+            strongest_pillar: [...calculatedScores.pillars].sort((a, b) => b.percentage - a.percentage)[0]?.pillar,
+            weakest_pillar: [...calculatedScores.pillars].sort((a, b) => a.percentage - b.percentage)[0]?.pillar,
+            raw_answers: answers
+          });
+
+        if (error) {
+          console.error('Failed to log scorecard_results:', error);
+        }
+      } catch (error: any) {
+        console.error('Exception logging scorecard_results:', error);
+      }
+    })();
 
     try {
       const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analyze-assessment`;
@@ -53,15 +85,15 @@ function App() {
       } else {
         console.error('AI analysis failed, continuing without it');
         aiAnalysis = {
-          pillarAnalyses: calculatedScores.pillars.map(p => ({
-            pillar: p.pillar,
-            strength: "Your team has made progress in this area.",
-            opportunity: "There is room for improvement."
-          })),
+          pillarAnalyses: [],
           topActions: [],
           quickWin: "Focus on the lowest-scored areas first for maximum impact.",
           doraComparison: "Compare your DORA metrics to industry benchmarks."
         };
+      }
+
+      if (aiAnalysis) {
+        aiAnalysis.pillarAnalyses = generateDynamicInsights(answers);
       }
 
       const newAssessment: Assessment = {
@@ -102,11 +134,7 @@ function App() {
         answers,
         scores: calculatedScores,
         aiAnalysis: {
-          pillarAnalyses: calculatedScores.pillars.map(p => ({
-            pillar: p.pillar,
-            strength: "Your team has made progress in this area.",
-            opportunity: "There is room for improvement."
-          })),
+          pillarAnalyses: generateDynamicInsights(answers),
           topActions: [],
           quickWin: "Focus on the lowest-scored areas first for maximum impact.",
           doraComparison: "Compare your DORA metrics to industry benchmarks."

@@ -11,7 +11,7 @@ export function ProgressIndicator({ currentStep, totalSteps, stepLabels }: Progr
     <div className="mb-8">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-semibold text-slate-700">
-          Step {currentStep} of {totalSteps}
+          Section {currentStep} of {totalSteps} &middot; {Math.round((currentStep / totalSteps) * 100)}% complete
         </span>
         <span className="text-sm text-slate-600">
           {stepLabels[currentStep - 1]}

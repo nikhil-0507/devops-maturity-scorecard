@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0D1117"/>
+  <rect x="0" y="0" width="7" height="630" fill="#1D9E75"/>
+  <rect x="70" y="70" width="1060" height="490" rx="20" fill="#161B22" stroke="#1D9E75" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="70" y="70" width="1060" height="5" rx="2" fill="#1D9E75" opacity="0.7"/>
+  <rect x="112" y="130" width="64" height="64" rx="10" fill="#1D9E75" fill-opacity="0.15"/>
+  <rect x="124" y="144" width="10" height="32" rx="2" fill="#1D9E75"/>
+  <rect x="142" y="154" width="10" height="22" rx="2" fill="#1D9E75" opacity="0.7"/>
+  <rect x="160" y="148" width="10" height="28" rx="2" fill="#1D9E75" opacity="0.5"/>
+  <text x="112" y="240" font-family="system-ui,-apple-system,sans-serif" font-size="52" font-weight="700" fill="#FFFFFF" letter-spacing="-1">DevOps Maturity Scorecard</text>
+  <text x="112" y="300" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#8B949E">Benchmark your engineering team against Elite DORA standards</text>
+  <rect x="112" y="330" width="976" height="1" fill="#1D9E75" opacity="0.25"/>
+  <rect x="112" y="358" width="220" height="90" rx="12" fill="#1D9E75" fill-opacity="0.1" stroke="#1D9E75" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="222" y="397" font-family="system-ui,-apple-system,sans-serif" font-size="36" font-weight="700" fill="#1D9E75" text-anchor="middle">24</text>
+  <text x="222" y="428" font-family="system-ui,-apple-system,sans-serif" font-size="18" fill="#8B949E" text-anchor="middle">questions</text>
+  <rect x="348" y="358" width="220" height="90" rx="12" fill="#1D9E75" fill-opacity="0.1" stroke="#1D9E75" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="458" y="397" font-family="system-ui,-apple-system,sans-serif" font-size="36" font-weight="700" fill="#1D9E75" text-anchor="middle">6</text>
+  <text x="458" y="428" font-family="system-ui,-apple-system,sans-serif" font-size="18" fill="#8B949E" text-anchor="middle">pillars</text>
+  <rect x="584" y="358" width="220" height="90" rx="12" fill="#1D9E75" fill-opacity="0.1" stroke="#1D9E75" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="694" y="397" font-family="system-ui,-apple-system,sans-serif" font-size="36" font-weight="700" fill="#1D9E75" text-anchor="middle">10 min</text>
+  <text x="694" y="428" font-family="system-ui,-apple-system,sans-serif" font-size="18" fill="#8B949E" text-anchor="middle">to complete</text>
+  <rect x="820" y="358" width="220" height="90" rx="12" fill="#1D9E75" fill-opacity="0.25" stroke="#1D9E75" stroke-width="1"/>
+  <text x="930" y="397" font-family="system-ui,-apple-system,sans-serif" font-size="30" font-weight="700" fill="#1D9E75" text-anchor="middle">Free</text>
+  <text x="930" y="428" font-family="system-ui,-apple-system,sans-serif" font-size="18" fill="#5DCAA5" text-anchor="middle">no sign-up needed</text>
+  <text x="1088" y="530" font-family="system-ui,-apple-system,sans-serif" font-size="20" fill="#8B949E" text-anchor="end">nikhil-0507.github.io/devops-maturity-scorecard</text>
+</svg>

@@ -5,9 +5,11 @@ interface PillarStepProps {
   pillar: Pillar;
   answers: Answers;
   onChange: (answers: Answers) => void;
+  highlightedField?: string | null;
+  motivationalMessage?: string;
 }
 
-export function PillarStep({ pillar, answers, onChange }: PillarStepProps) {
+export function PillarStep({ pillar, answers, onChange, highlightedField, motivationalMessage }: PillarStepProps) {
   const handleAnswerChange = (questionId: string, score: number) => {
     onChange({ ...answers, [questionId]: score });
   };
@@ -18,6 +20,11 @@ export function PillarStep({ pillar, answers, onChange }: PillarStepProps) {
         <h2 className="text-2xl font-bold text-slate-900 mb-2">{pillar.name}</h2>
         <h3 className="text-xl text-teal-700 mb-3">{pillar.title}</h3>
         <p className="text-slate-600 leading-relaxed">{pillar.description}</p>
+        {motivationalMessage && (
+          <div className="mt-4 bg-teal-50 border-l-4 border-teal-500 p-4 rounded-r-lg text-slate-700">
+            {motivationalMessage}
+          </div>
+        )}
       </div>
 
       {pillar.questions.map((question, index) => (
@@ -33,9 +40,12 @@ export function PillarStep({ pillar, answers, onChange }: PillarStepProps) {
           </div>
 
           <select
+            id={question.id}
             value={answers[question.id] || ''}
             onChange={(e) => handleAnswerChange(question.id, Number(e.target.value))}
-            className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white text-base"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white text-base ${
+              highlightedField === question.id ? 'border-red-500 bg-red-50' : 'border-slate-300'
+            }`}
             required
           >
             <option value="">Select your answer...</option>
@@ -45,6 +55,9 @@ export function PillarStep({ pillar, answers, onChange }: PillarStepProps) {
               </option>
             ))}
           </select>
+          {highlightedField === question.id && (
+            <p className="mt-2 text-sm text-red-600">Please answer this question to continue.</p>
+          )}
         </div>
       ))}
     </div>
